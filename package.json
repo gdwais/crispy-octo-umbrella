@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "async-request": "^1.2.0",
     "express": "^4.16.3",
     "lodash": "^4.17.11",
     "onchange": "^5.0.2",
@@ -15,7 +16,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "onchange -i -k 'src/server/index.js' -- node src/server/index.js"
+    "server": "onchange -i -k 'src/server/index.js' -- node src/server/index.js",
+    "engage": "concurrently --kill-others-on-fail \"npm run server\" \"npm start\"",
+    "debug": "node inspect src/server/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -25,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  }
 }
